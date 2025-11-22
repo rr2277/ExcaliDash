@@ -2,7 +2,7 @@
 
 # ExcaliDash v0.1.0
 
-A beautiful, self hosted dashboard and organizer for [Excalidraw](https://github.com/excalidraw/excalidraw) with live collaboration.
+A self hosted dashboard and organizer for [Excalidraw](https://github.com/excalidraw/excalidraw) with live collaboration.
 ![](dashboard.png)
 
 ![](demo.gif)
@@ -52,6 +52,8 @@ docker compose -f docker-compose.prod.yml pull
 
 # Run container
 docker compose -f docker-compose.prod.yml up -d
+
+# Access the frontend at localhost:6767
 ```
 
 ## Docker build

@@ -93,7 +93,6 @@ export const Dashboard: React.FC = () => {
   type SortField = 'name' | 'createdAt' | 'updatedAt';
   type SortDirection = 'asc' | 'desc';
 
-  // ... (rest of existing state)
 
   const searchInputRef = useRef<HTMLInputElement>(null);
 
@@ -126,7 +125,6 @@ export const Dashboard: React.FC = () => {
     refreshData();
   }, [refreshData]);
 
-  // ... (Drag selection logic remains same)
   // Drag File State
   const [isDraggingFile, setIsDraggingFile] = useState(false);
   const dragCounter = useRef(0);
@@ -222,7 +220,6 @@ export const Dashboard: React.FC = () => {
     setDragCurrent({ x: e.clientX, y: e.clientY });
   };
 
-  // ... (Sorting logic remains same)
   const sortedDrawings = React.useMemo(() => {
     return [...drawings].sort((a, b) => {
       const { field, direction } = sortConfig;
@@ -488,7 +485,6 @@ export const Dashboard: React.FC = () => {
     }
   };
 
-  // ... (rest of handlers like Create/Edit/Delete Collection remain same)
   const handleMoveToCollection = async (id: string, collectionId: string | null) => {
     setDrawings(prev => {
       return prev.map(d => d.id === id ? { ...d, collectionId } : d)
